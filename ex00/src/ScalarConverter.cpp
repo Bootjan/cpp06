@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 21:51:06 by bootjan           #+#    #+#             */
-/*   Updated: 2024/01/17 22:25:16 by bootjan          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ScalarConverter.cpp                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bootjan <bootjan@student.42.fr>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/01/17 21:51:06 by bootjan       #+#    #+#                 */
+/*   Updated: 2024/01/18 18:45:42 by bschaafs      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,40 @@ void	convertInt(const std::string& format)
 	std::cout << format << std::flush;
 }
 
-void	isPseudoLitf(const std::string& format)
+bool	isPseudoLitf(const std::string& format)
 {
-	if (format == "nan") { printStr("nanf"); };
-	if (format == "-inf" || format == "-inff") { printStr("-inff"); };
-	if (format == "+inf" || format == "+inff") { printStr("+inff"); };
+	if (format == "nan") { printStr("nanf"); return true; };
+	if (format == "-inf" || format == "-inff") { printStr("-inff"); return true; };
+	if (format == "+inf" || format == "+inff") { printStr("+inff"); return true; };
+	return false;
 }
 
-void	isPseudoLitd(const std::string& format)
+bool	isPseudoLitd(const std::string& format)
 {
-	if (format == "nan") { printStr("nan"); };
-	if (format == "-inf" || format == "-inff") { printStr("-inf"); };
-	if (format == "+inf" || format == "+inff") { printStr("+inf"); };
+	if (format == "nan") { printStr("nan"); return true; };
+	if (format == "-inf" || format == "-inff") { printStr("-inf"); return true; };
+	if (format == "+inf" || format == "+inff") { printStr("+inf"); return true; };
+	return false;
 }
 
 void	convertFloat(const std::string& format)
 {
-	isPseudoLitf(format);
+	char *pend;
+	if (isPseudoLitf(format))
+		return ;
+	const char *str = format.c_str();
+	float	fl = static_cast<float>(std::strtof(str, &pend));
+	if (pend && pend[0])
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << fl << "f" << std::endl;
 }
 
 void	convertDouble(const std::string& format)
 {
-	isPseudoLitd(format);
-	incorrectFormat(format)
+	if (isPseudoLitd(format))
 		return ;
+	
 }
 
 void	ScalarConverter::convert(const std::string& format) const
