@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 21:48:32 by bootjan           #+#    #+#             */
-/*   Updated: 2024/01/19 10:32:47 by bootjan          ###   ########.fr       */
+/*   Created: 2024/01/19 00:09:10 by bootjan           #+#    #+#             */
+/*   Updated: 2024/01/19 10:42:45 by bootjan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#include "Serializer.hpp"
 
-# include <iostream>
-# include <limits.h>
-
-class ScalarConverter
+uintptr_t	Serializer::serialize(Data* ptr)
 {
-	public:
-		ScalarConverter() {};
-		ScalarConverter(const ScalarConverter& rhs) {};
-		ScalarConverter&	operator=(const ScalarConverter& rhs) { return *this; };
-		~ScalarConverter() {};
+	uintptr_t	sptr = reinterpret_cast<uintptr_t>(ptr);
+	return sptr;
+}
 
-		void	convert(const std::string& format) const;
-};
-
-#endif
+Data*	Serializer::deserialize(uintptr_t ptr)
+{
+	Data*	dptr = reinterpret_cast<Data *>(ptr);
+	return (dptr);
+}

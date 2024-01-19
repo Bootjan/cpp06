@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 21:48:32 by bootjan           #+#    #+#             */
-/*   Updated: 2024/01/19 10:32:47 by bootjan          ###   ########.fr       */
+/*   Created: 2024/01/19 00:06:28 by bootjan           #+#    #+#             */
+/*   Updated: 2024/01/19 10:42:41 by bootjan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-# include <iostream>
-# include <limits.h>
+# include "Data.hpp"
 
-class ScalarConverter
+class Serializer
 {
 	public:
-		ScalarConverter() {};
-		ScalarConverter(const ScalarConverter& rhs) {};
-		ScalarConverter&	operator=(const ScalarConverter& rhs) { return *this; };
-		~ScalarConverter() {};
+		Serializer() {};
+		~Serializer() {};
 
-		void	convert(const std::string& format) const;
+		uintptr_t	serialize(Data* ptr);
+		Data*		deserialize(uintptr_t ptr);
 };
 
 #endif

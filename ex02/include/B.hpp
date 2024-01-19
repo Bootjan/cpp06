@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bootjan <bootjan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 21:48:32 by bootjan           #+#    #+#             */
-/*   Updated: 2024/01/19 10:32:47 by bootjan          ###   ########.fr       */
+/*   Created: 2024/01/19 10:45:35 by bootjan           #+#    #+#             */
+/*   Updated: 2024/01/19 10:51:07 by bootjan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef B_HPP
+# define B_HPP
 
-# include <iostream>
-# include <limits.h>
+# include "Base.hpp"
 
-class ScalarConverter
+class B : public Base
 {
-	public:
-		ScalarConverter() {};
-		ScalarConverter(const ScalarConverter& rhs) {};
-		ScalarConverter&	operator=(const ScalarConverter& rhs) { return *this; };
-		~ScalarConverter() {};
-
-		void	convert(const std::string& format) const;
+public:
+	B() {};
+	~B() {};
 };
 
 #endif
