@@ -2,7 +2,7 @@ SRC_DIR = src
 SRCS			:=$(wildcard $(SRC_DIR)/*.cpp) \
 				main.cpp
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
-NAME = ScalarConverter
+NAME = Serializer
 VPATH = . src/
 
 I_DIRS := $(shell find . -type f -name "*.hpp" -exec dirname {} + | uniq)
